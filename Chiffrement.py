@@ -7,8 +7,13 @@ def chiffrer_fichier_txt(nom_fichier, cle, ty):
     with open(nom_fichier, "r", encoding="utf-8") as f:
         for ligne in f:
             ligne = ligne.rstrip("\n")
-            lignes_modifiees.append(chiffrer_cesar(ligne, cle))
 
+            if type == 'chiffrer':
+                lignes_modifiees.append(chiffrer_cesar(ligne, cle))
+
+            else:
+                lignes_modifiees.append(dechiffrer_cesar(ligne, cle))
+                
     with open(nom_fichier, "w", encoding="utf-8") as f:
         for ligne in lignes_modifiees:
             f.write(ligne + "\n")
@@ -33,7 +38,12 @@ def chiffrer_cesar(message, cle):
         cle = str_to_cle(cle)
 
     for i in range(len(message)):
-        chiffrer_message = chiffrer_message + chr((ord(message[i]) - 32 + cle) % 95 + 32)
+        
+        if ord(message[i]) >= 32 and ord(message[i]) <= 126:
+            chiffrer_message = chiffrer_message + chr((ord(message[i]) - 32 + cle) % 95 + 32)
+
+        else:
+            chiffrer_message = chiffrer_message + message[i]
 
     return chiffrer_message
     
@@ -45,7 +55,12 @@ def dechiffrer_cesar(message, cle):
         cle = str_to_cle(cle)
 
     for i in range(len(message)):
-        chiffrer_message = chiffrer_message + chr((ord(message[i]) - 32 - cle) % 95 + 32)
+        
+        if ord(message[i]) >= 32 and ord(message[i]) <= 126:
+            chiffrer_message = chiffrer_message + chr((ord(message[i]) - 32 - cle) % 95 + 32)
+
+        else:
+            chiffrer_message = chiffrer_message + message[i]
 
     return chiffrer_message
 
