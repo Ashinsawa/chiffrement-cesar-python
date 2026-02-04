@@ -1,20 +1,23 @@
 import tkinter as tk
-from tkinter import messagebox 
+from tkinter import messagebox
 
-def chiffrer_fichier_txt(nom_fichier, cle, new_file, type):
+import os
+
+def chiffrer_fichier_txt(nom_fichier, cle, new_file, mode):
+    dossier_source = os.path.dirname(nom_fichier)
+    chemin_sortie = os.path.join(dossier_source, new_file)
+
     lignes_modifiees = []
 
     with open(nom_fichier, "r", encoding="utf-8") as f:
         for ligne in f:
             ligne = ligne.rstrip("\n")
-
-            if type == 'chiffrer':
+            if mode == "chiffrer":
                 lignes_modifiees.append(chiffrer_vigenere(ligne, cle))
-
             else:
                 lignes_modifiees.append(dechiffrer_vigenere(ligne, cle))
-                
-    with open(new_file, "w", encoding="utf-8") as f:
+
+    with open(chemin_sortie, "w", encoding="utf-8") as f:
         for ligne in lignes_modifiees:
             f.write(ligne + "\n")
 
@@ -111,4 +114,4 @@ label_resultat.pack(pady=10)
 # ---------- Boucle principale ----------
 fenetre.mainloop()
 
-#chiffrer_fichier_txt("C:\Users\nosty\OneDrive\Bureau\Algo\The Dunwich Horror_q1.txt.txt", "~lelou%C'oPslsx)f~:-ru7={", "The Dunwich Horror_q1.txt", "chiffrer")
+chiffrer_fichier_txt(r"C:\Users\nosty\OneDrive\Bureau\Algo\The Dunwich Horror.txt", "~lelou%C'oPslsx)f~:-ru7={", "The Dunwich Horror_q1.txt", "chiffrer")
