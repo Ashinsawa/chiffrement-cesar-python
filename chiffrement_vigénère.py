@@ -114,4 +114,5 @@ label_resultat.pack(pady=10)
 # ---------- Boucle principale ----------
 fenetre.mainloop()
 
-chiffrer_fichier_txt(r"C:\Users\nosty\OneDrive\Bureau\Algo\The Dunwich Horror.txt", "~lelou%C'oPslsx)f~:-ru7={", "The Dunwich Horror_q1.txt", "chiffrer")
+# chiffrer_fichier_txt(r"C:\Users\nosty\OneDrive\Bureau\Algo\The Dunwich Horror.txt", "~lelou%C'oPslsx)f~:-ru7={", "The Dunwich Horror_q1.txt", "chiffrer")
+# chiffrer_fichier_txt(r"C:\Users\nosty\OneDrive\Bureau\Algo\The Call of Cthulhu.txt", "The Call of Cthulhu.txt", "The Dunwich Horror_q2.txt", "chiffrer")
