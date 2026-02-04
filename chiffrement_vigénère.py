@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox 
 
-def chiffrer_fichier_txt(nom_fichier, cle, ty):
+def chiffrer_fichier_txt(nom_fichier, cle):
     lignes_modifiees = []
 
     with open(nom_fichier, "r", encoding="utf-8") as f:
@@ -25,7 +25,7 @@ def chiffrer_vigenere(message, cle):
     for i in range(len(message)):
         
         if ord(message[i]) >= 32 and ord(message[i]) <= 126:
-            chiffrer_message = chiffrer_message + chr((ord(message[i]) - 32 + cle[i % len(cle)]) % 95 + 32)
+            chiffrer_message = chiffrer_message + chr((ord(message[i]) - 32 + ord(cle[i % len(cle)]) - 32) % 95 + 32)
 
         else:
             chiffrer_message = chiffrer_message + message[i]
@@ -39,7 +39,7 @@ def dechiffrer_vigenere(message, cle):
     for i in range(len(message)):
         
         if ord(message[i]) >= 32 and ord(message[i]) <= 126:
-            chiffrer_message = chiffrer_message + chr((ord(message[i]) - 32 - cle[i % len(cle)]) % 95 + 32)
+            chiffrer_message = chiffrer_message + chr((ord(message[i]) - 32 - ord(cle[i % len(cle)]) - 32) % 95 + 32)
 
         else:
             chiffrer_message = chiffrer_message + message[i]
