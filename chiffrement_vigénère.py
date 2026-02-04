@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox 
 
-def chiffrer_fichier_txt(nom_fichier, cle):
+def chiffrer_fichier_txt(nom_fichier, cle, new_file, type):
     lignes_modifiees = []
 
     with open(nom_fichier, "r", encoding="utf-8") as f:
@@ -14,7 +14,7 @@ def chiffrer_fichier_txt(nom_fichier, cle):
             else:
                 lignes_modifiees.append(dechiffrer_vigenere(ligne, cle))
                 
-    with open(nom_fichier, "w", encoding="utf-8") as f:
+    with open(new_file, "w", encoding="utf-8") as f:
         for ligne in lignes_modifiees:
             f.write(ligne + "\n")
 
@@ -110,3 +110,5 @@ label_resultat.pack(pady=10)
 
 # ---------- Boucle principale ----------
 fenetre.mainloop()
+
+#chiffrer_fichier_txt("C:\Users\nosty\OneDrive\Bureau\Algo\The Dunwich Horror_q1.txt.txt", "~lelou%C'oPslsx)f~:-ru7={", "The Dunwich Horror_q1.txt", "chiffrer")
